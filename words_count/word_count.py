@@ -1,10 +1,15 @@
 import string
 
 words_count = dict()
-with open("text.txt", "r") as text_file:
+with open("text.txt", mode="r", encoding="utf-8") as text_file:
     for line in text_file:
         # strip lines, lower text, remove punctuation, then split into words
-        words = line.strip().lower().translate(line.maketrans("", "", string.punctuation)).split(" ")
+        words = (
+            line.strip()
+            .lower()
+            .translate(line.maketrans("", "", string.punctuation))
+            .split()
+        )
         for word in words:
             if word in words_count:
                 words_count[word] += 1

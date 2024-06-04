@@ -3,16 +3,16 @@ from graph.g_node import GNode
 
 
 def walk_graph(node: GNode) -> list[type[GNode]]:
-    def drf(node: GNode):
+    def dfs(node: GNode):
         if node in result:
             return
         # there should not be any duplicates, since graph should be acyclic
         result.append(node)
         for child in node.children:
-            drf(child)
+            dfs(child)
 
     result = list()
-    drf(node)
+    dfs(node)
     return result
 
 
